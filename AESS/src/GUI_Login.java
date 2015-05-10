@@ -1,5 +1,7 @@
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,6 +39,7 @@ class GUI_Login extends JFrame{
 	TextField tf_Pwd = new TextField(20);
 	JButton bt_Login = new JButton("로그인");
 	JButton bt_Cancel = new JButton("취소");
+	JButton bt_SignUp = new JButton("회원가입");
 	JButton bt1 = new JButton("dd");
 	
 
@@ -65,6 +68,9 @@ class GUI_Login extends JFrame{
 		bt_Login.addKeyListener(new KeyHandler());
 		bt_Cancel.addActionListener(new EventHandler());
 		
+		/*회원가입 버튼 기능*/
+		bt_SignUp.addActionListener(new EventHandler());
+		
 		lbSmallLogo.setBounds(40, 0, 321, 68);
 		add(lbSmallLogo, "North");
 		
@@ -79,10 +85,13 @@ class GUI_Login extends JFrame{
 		add(lb_Pass);
 		add(tf_Pwd);
 
-		bt_Login.setBounds(120, 153, 80, 21);
-		bt_Cancel.setBounds(210, 153, 80, 21);
+		bt_Login.setBounds(70, 153, 80, 21);
+		bt_Cancel.setBounds(160, 153, 80, 21);
+		bt_SignUp.setBounds(250, 153, 80, 21);
 		add(bt_Login);
 		add(bt_Cancel);
+		/*회원가입 기능*/
+		add(bt_SignUp);
 		
 		valid.setBounds(105, 190, 220, 21);
 		add(valid);
@@ -90,7 +99,7 @@ class GUI_Login extends JFrame{
 		
 		this.setResizable(false);
 	}
-	
+
 	void Login_Set() {
 		char nowTest;
 		int notYet=0;
@@ -166,6 +175,8 @@ class GUI_Login extends JFrame{
 		}
 	}
 
+	
+	
 	class KeyHandler implements KeyListener
 	{
 		@Override
@@ -190,6 +201,12 @@ class GUI_Login extends JFrame{
 				dispose();
 				System.exit(0);
 			} 
+			/*회원가입 버튼 기능 추가*/
+			else if(e.getSource() == bt_SignUp){
+				System.out.printf("1\n");
+				GUI_SignUp gui = new GUI_SignUp();
+			    gui.setVisible(true);
+			}
 		}
 	} // class EventHandler
 
